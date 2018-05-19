@@ -1,55 +1,19 @@
-#alias ls="ls -al"
-# Enviroment variables
-export ZSH=/home/sumit/.oh-my-zsh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export LC_ALL=es_MX.UTF-8
-export TERMINAL=terminator
-export PAGER=less
-export VISUAL=emacs
-export TERM="xterm-256color"
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vi'
- else
-   export EDITOR='emacs'
-fi
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Syntax highlighting and tab completion
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-autoload -Uz compinit
 
-# Colored man pages using less as pager
-#man() {
-#    env \
-#	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-#	LESS_TERMCAP_md=$(printf "\e[1;31m") \
-#	LESS_TERMCAP_me=$(printf "\e[0m") \
-#	LESS_TERMCAP_se=$(printf "\e[0m") \
-#	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-#	LESS_TERMCAP_ue=$(printf "\e[0m") \
-#	LESS_TERMCAP_us=$(printf "\e[1;32m") \
-#	man "$@"
-#}
+# Path to your oh-my-zsh installation.
+export ZSH=${HOME}/.oh-my-zsh
 
-# Aliases for a few useful commands
-alias mirrorUpdate="sudo reflector --latest 250 --protocol https --sort rate --save
-/etc/pacman.d/mirrorlist"
-alias yaourt="yaourt --pager --color"
-alias pacmanGhost="~/.pacman.sh"
-alias shivita="toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona"
-alias ip="ip -c"
-alias rm="rm -i"
-alias x="ranger"
-alias c="cmus"
-alias h="htop"
-alias ll="ls -al"
-alias pe="cd /home/sumit/project-euler"
-alias pac="cd /home/sumit/packages"
-alias zs="sudo cp /home/sumit/.zshrc /root/ && source /home/sumit/.zshrc"
 
-#neofetch
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Font mode for powerlevel9k
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -89,7 +53,7 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # OS segment
 POWERLEVEL9K_OS_ICON_BACKGROUND='white'
-POWERLEVEL9K_LINUX_ICON='%F{blue}\uf300 %F{black}arch%F{blue}linux%f'
+POWERLEVEL9K_LINUX_ICON='%F{blue}\uf303 %F{black}arch%F{blue}linux%f'
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$'\uf408'
@@ -136,12 +100,23 @@ ENABLE_CORRECTION="true"
 # Command execution time stamp shown in the history command output.
 HIST_STAMPS="mm/dd/yyyy"
 
-# Plugins to load
-plugins=(git
-common-aliases)
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+)
+
 source $ZSH/oh-my-zsh.sh
+
 
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status background_jobs time  battery)
 export GPG_TTY=$(tty)
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pe="cd /home/sumit/project-euler"
